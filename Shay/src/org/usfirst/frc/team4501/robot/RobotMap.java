@@ -19,5 +19,9 @@ public class RobotMap {
 	public static int TALON1 = 0; 
 	public static int TALON2 = 1;
 	public static int TALON3 = 2;
-	public static int TALON4 = 3;
+	public static int ARMHIGH = 0;
+	public static int ARMLOW = 1;
+	public static int LIMITSWITCH = 1;
+	public static int LIMITSWITCH2 = 2;
+	public static int POTENT = 3;
 }

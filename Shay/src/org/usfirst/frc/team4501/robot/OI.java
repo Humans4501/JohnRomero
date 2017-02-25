@@ -2,8 +2,11 @@ package org.usfirst.frc.team4501.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 import org.usfirst.frc.team4501.robot.XboxController.Trigger;
+import org.usfirst.frc.team4501.robot.commands.ArmClose;
+import org.usfirst.frc.team4501.robot.commands.ArmOpen;
 import org.usfirst.frc.team4501.robot.commands.ExampleCommand;
 
 /**
@@ -38,9 +41,15 @@ public class OI {
 	// Start the command when the button is released and let it run the command
 	// until it is finished as determined by it's isFinished method.
 	// button.whenReleased(new ExampleCommand());
+	public static final int TRIGGER = 1, BUTTON_2 = 2, BUTTON_3 = 3, BUTTON_4 = 4, BUTTON_5 = 5, BUTTON_6 = 6,
+			BUTTON_7 = 7, BUTTON_8 = 8, BUTTON_9 = 9, BUTTON_10 = 10, BUTTON_11 = 11;
+
 	
 	XboxController controller = new XboxController(0);
 	Joystick stick = new Joystick(1);
+	
+	Button button1 = new JoystickButton(controller, controller.BUTTON_A );
+	Button button2 = new JoystickButton(controller, controller.BUTTON_B);
 	
 	public double getLeftXboxX() {
 		return controller.getRawAxis(0);
@@ -88,5 +97,10 @@ public class OI {
 
 	public double getTriggers() {
 		return controller.getRawAxis(XboxController.TRIGGER_L) - controller.getRawAxis(XboxController.TRIGGER_R);
+	}
+	
+	public OI(){
+		button1.whenPressed(new ArmOpen());
+		button2.whenPressed(new ArmClose());
 	}
 }
